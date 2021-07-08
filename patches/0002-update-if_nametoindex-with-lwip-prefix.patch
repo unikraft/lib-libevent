@@ -1,0 +1,29 @@
+From cd469df5ae915282bc1cc633c895fc7c4b601aef Mon Sep 17 00:00:00 2001
+From: gaulthier gain <gaulthier.gain@uliege.be>
+Date: Mon, 10 Aug 2020 11:28:45 +0000
+Subject: [PATCH] Update if_nametoindex with lwip prefix
+
+This patch updates the definition of the `if_nametoindex` function to
+`lwip_if_nametoindex` which avoids warning during building.
+
+Signed-off-by: gaulthier gain <gaulthier.gain@uliege.be>
+---
+ evutil.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/evutil.c b/evutil.c
+index 9817f08..957c301 100644
+--- a/evutil.c
++++ b/evutil.c
+@@ -2007,7 +2007,7 @@ evutil_inet_pton_scope(int af, const char *src, void *dst, unsigned *indexp)
+ 	if (cp == NULL)
+ 		return evutil_inet_pton(af, src, dst);
+ 
+-	if_index = if_nametoindex(cp + 1);
++	if_index = lwip_if_nametoindex(cp + 1);
+ 	if (if_index == 0) {
+ 		/* Could be numeric */
+ 		if_index = strtoul(cp + 1, &check, 10);
+-- 
+2.17.1
+
