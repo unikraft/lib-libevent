@@ -1,0 +1,13 @@
+config LIBLIBEVENT
+	   bool "libevent - an event notification library"
+	   default y
+	   select LIBUKMMAP
+	   select LIBPOSIX_SYSINFO
+	   select LIBNEWLIBC
+	   select LIBLWIP
+	   select LWIP_TCP
+           select LWIP_IPV4
+           select LWIP_IPV6
+	   select LWIP_SOCKET
+           select LWIP_DNS
+           select LIBPTHREAD_EMBEDDED
